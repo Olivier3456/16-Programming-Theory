@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {   
     private Transform _destination;
+    
    
     private GameObject _selectedAnimal;
 

@@ -4,19 +4,34 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class Animal : MonoBehaviour
+public class Animal : MonoBehaviour
 {
     protected NavMeshAgent _agent;
     protected Animator _anim;
 
 
-    protected float Speed = 10;
-    
-    protected float RatioSpeedAnim = 5;
+    private float _speed;
+   [HideInInspector] public float Speed
+    {
+        get { return _speed; }
+        set { if (value >= 1.0f && value <= 50.0f) _speed = value;
+            else Debug.LogError("_speed ne peut pas avoir une valeur inférieure à 1 ou supérieure à 50.");
+        }
+    }
+        
+    private float _ratioSpeedAnim;
+    [HideInInspector] public float RatioSpeedAnim
+    {
+        get { return _ratioSpeedAnim; }
+        set {
+            if (value >= 0.1f && value <= 50.0f) _ratioSpeedAnim = value;
+            else Debug.LogError("_ratioSpeedAnim ne peut pas avoir une valeur inférieure à 0.1 ou supérieure à 50.");
+        }
+    }
 
 
 
-    void Awake()
+    void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         _anim = GetComponent<Animator>();
@@ -27,19 +42,20 @@ public abstract class Animal : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, _agent.destination) < 0.5f)        // Si l'araignée est arrivée à sa destination...
+        if (Vector3.Distance(transform.position, _agent.destination) < 0.2f)        // Si l'animal est arrivée à sa destination...
         {
             StopMovement();
         }
     }
 
 
-    public void Move(Transform dest)
-    {        
+    public virtual void Move(Transform dest)
+    {
+        Debug.Log("La méthode Move() de la classe de base Animal a été appelée.");
         _agent.isStopped = false;
         _agent.SetDestination(dest.position);
         _anim.SetFloat("Speed_f", 1);
-        SetSpeedMoveAnimation(RatioSpeedAnim);
+        SetSpeedAnimation(RatioSpeedAnim);
     }
 
 
@@ -48,12 +64,12 @@ public abstract class Animal : MonoBehaviour
     {
         _agent.isStopped = true;
         _anim.SetFloat("Speed_f", 0);
-        SetSpeedMoveAnimation(1);            // Remet la vitesse d'animation à 1 pour l'animation Idle.
+        SetSpeedAnimation(Speed);            // Remet la vitesse d'animation à 1 pour l'animation Idle.
     }
 
 
 
-    protected void SetSpeedMoveAnimation(float ratio)
+    protected void SetSpeedAnimation(float ratio)
     {
         _anim.speed = Speed / ratio;
     }

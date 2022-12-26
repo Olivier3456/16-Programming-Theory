@@ -5,13 +5,13 @@ using UnityEngine;
 public class Spider : Animal
 {
     
-    [SerializeField] private float _spiderSpeed;
-    [SerializeField] private float _ratioSpiderSpeedAnim;
+    private float _spiderSpeed = 10.0f;
+    private float _ratioSpiderSpeedAnim = 5.0f;
     
     
-    private void Start()
+    private void Awake()
     {
-        Speed = _spiderSpeed;                         // Connecte la varible _speed SerializeField à celle de la classe-mère.
+        Speed = _spiderSpeed;                          // Connecte la varible _spiderSpeed à la property Speed de la classe-mère.
         RatioSpeedAnim = _ratioSpiderSpeedAnim;        // Idem avec _ratioSpeedAnim.             
     }
     
