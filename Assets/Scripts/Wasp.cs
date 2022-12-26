@@ -16,9 +16,17 @@ public class Wasp : Animal
 
     }
 
-   
 
-   
+    public override void VerifyArrivalToDestination()
+    {
+        if (Vector3.Distance(transform.position, _agent.destination) < 0.2f)
+        {
+            Debug.Log("La méthode override VerifyArrivalToDestination() de la classe Wasp a été appelée");
+            StopMovement();
+        }
+    }
+
+
 
     public override void Move(Transform dest)
     {

@@ -42,7 +42,12 @@ public class Animal : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, _agent.destination) < 0.2f)        // Si l'animal est arrivée à sa destination...
+        VerifyArrivalToDestination();
+    }
+
+    public virtual void VerifyArrivalToDestination()
+    {
+        if (Vector3.Distance(transform.position, _agent.destination) < 0.2f)
         {
             StopMovement();
         }
