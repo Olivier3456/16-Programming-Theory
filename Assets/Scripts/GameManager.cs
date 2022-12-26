@@ -22,11 +22,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) SetDestination();
+        if (Input.GetMouseButtonDown(0)) ClickAction();
     }
 
 
-    public void SetDestination()
+    public void ClickAction()
     {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000))

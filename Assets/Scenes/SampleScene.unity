@@ -925,6 +925,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1653412350458736966, guid: 371ebfe1eef808a449387e2201c16c0a,
+        type: 3}
+      propertyPath: Speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653412350458736966, guid: 371ebfe1eef808a449387e2201c16c0a,
+        type: 3}
+      propertyPath: _speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653412350458736966, guid: 371ebfe1eef808a449387e2201c16c0a,
+        type: 3}
+      propertyPath: _spiderSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653412350458736966, guid: 371ebfe1eef808a449387e2201c16c0a,
+        type: 3}
+      propertyPath: RatioSpeedAnim
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653412350458736966, guid: 371ebfe1eef808a449387e2201c16c0a,
+        type: 3}
+      propertyPath: _ratioSpeedAnim
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1653412350458736966, guid: 371ebfe1eef808a449387e2201c16c0a,
+        type: 3}
+      propertyPath: _ratioSpiderSpeedAnim
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1887975900744191082, guid: 371ebfe1eef808a449387e2201c16c0a,
         type: 3}
       propertyPath: m_Name
