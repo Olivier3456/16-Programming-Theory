@@ -24,11 +24,11 @@ public class Wasp : Animal
     {
         Debug.Log("La méthode override VerifyArrivalToDestination() de la classe Wasp a été appelée");
 
-        if (Vector3.Distance(transform.position, _finalDestination.position) < 0.2f)
+        if (Vector3.Distance(transform.position, _finalDestination.position) < 0.5f)
         {
 
             Debug.Log("L'abeille est arrivée à destination.");
-            
+            _audioSource.Pause();
             StopMovement();
         }
     }
@@ -59,6 +59,7 @@ public class Wasp : Animal
 
         _finalDestination = dest;
         _indexMovements = 0;
+        _audioSource.Play();
         StartCoroutine(RandomMove());
     }
 

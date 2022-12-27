@@ -8,6 +8,7 @@ public class Animal : MonoBehaviour
 {
     protected NavMeshAgent _agent;
     protected Animator _anim;
+    protected AudioSource _audioSource;
 
 
     private float _speed;
@@ -37,6 +38,7 @@ public class Animal : MonoBehaviour
         _anim = GetComponent<Animator>();
         Debug.Log("Vitesse de l'agent : " + Speed);
         _agent.speed = Speed;
+        _audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -61,6 +63,7 @@ public class Animal : MonoBehaviour
         _agent.SetDestination(dest.position);
         _anim.SetFloat("Speed_f", 1);
         SetSpeedAnimation(RatioSpeedAnim);
+        _audioSource.Play();        
     }
 
 
@@ -70,6 +73,7 @@ public class Animal : MonoBehaviour
         _agent.isStopped = true;
         _anim.SetFloat("Speed_f", 0);
         SetSpeedAnimation(Speed);            // Remet la vitesse d'animation à 1 pour l'animation Idle.
+        _audioSource.Pause();
     }
 
 
