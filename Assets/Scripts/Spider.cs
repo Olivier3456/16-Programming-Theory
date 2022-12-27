@@ -4,25 +4,16 @@ using UnityEngine;
 
 public class Spider : Animal
 {
-    [SerializeField] private float _spiderSpeed;
-
-    private void Start()
+    
+    private float _spiderSpeed = 10.0f;
+    private float _ratioSpiderSpeedAnim = 5.0f;
+    
+    
+    private void Awake()
     {
-        _agent.speed = _spiderSpeed;
+        Speed = _spiderSpeed;                          // Connecte la varible _spiderSpeed à la property Speed de la classe-mère.
+        RatioSpeedAnim = _ratioSpiderSpeedAnim;        // Idem avec _ratioSpeedAnim.             
     }
-
-
-    private void Update()
-    {
-        if (Vector3.Distance(transform.position, _agent.destination) < 1.0f)
-        { _agent.isStopped = true; }
-    }
-
-
-    public override void Move(Transform dest)
-    {
-        _agent.isStopped = false;
-        _agent.SetDestination(dest.position);
-    }
+    
 }
 
