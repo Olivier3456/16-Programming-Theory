@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wasp : Animal
+public class Wasp : Animal          // INHERITANCE
 {
 
     private float _waspSpeed = 50.0f;
@@ -14,13 +14,13 @@ public class Wasp : Animal
 
     private void Awake()
     {
-        Speed = _waspSpeed;                          // Connecte la varible _waspSpeed à la property correspondante de la classe-mère.
-        RatioSpeedAnim = _ratioWaspSpeedAnim;        // Idem avec _ratioSpeedAnim.       
+        Speed = _waspSpeed;                          // INHERITANCE
+        RatioSpeedAnim = _ratioWaspSpeedAnim;        // INHERITANCE   
         _finalDestination = transform;
     }
 
 
-    public override void VerifyArrivalToDestination()
+    public override void VerifyArrivalToDestination()           // POLYMORPHISM
     {
         Debug.Log("La méthode override VerifyArrivalToDestination() de la classe Wasp a été appelée");
 
@@ -29,7 +29,7 @@ public class Wasp : Animal
 
             Debug.Log("L'abeille est arrivée à destination.");
             _audioSource.Stop();
-            StopMovement();
+            StopMovement();         // INHERITANCE
         }
     }
 
@@ -43,7 +43,7 @@ public class Wasp : Animal
             _agent.isStopped = false;
             _agent.SetDestination(SetRandomDestination().position);
             _anim.SetFloat("Speed_f", 1);
-            SetSpeedAnimation(RatioSpeedAnim);
+            SetSpeedAnimation(RatioSpeedAnim);      // INHERITANCE
             StartCoroutine(RandomMove());
         }
         else if (_indexMovements == 5)
@@ -53,7 +53,7 @@ public class Wasp : Animal
     }
 
 
-    public override void Move(Transform dest)
+    public override void Move(Transform dest)           // POLYMORPHISM
     {
         Debug.Log("La méthode override Move() de la classe Wasp a été appelée.");
 
@@ -64,7 +64,7 @@ public class Wasp : Animal
     }
 
 
-    private Transform SetRandomDestination()
+    private Transform SetRandomDestination()            // ABSTRACTION
     {
         GameObject result = new GameObject();
         result.transform.position = new Vector3(Random.Range(-45, 45), 0, Random.Range(-45, 45));

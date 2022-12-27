@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void ClickAction()
+    public void ClickAction()   // ABSTRACTION
     {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000))
@@ -50,18 +50,18 @@ public class GameManager : MonoBehaviour
         }        
     }
 
-    public void ChangeText(string text, Color color)
+    public void ChangeText(string text, Color color)        // POLYMORPHISM
     {
         _selectedAnimalText.text = text;
         _selectedAnimalText.color = color;
     }
 
-    public void ChangeText(string text)
+    public void ChangeText(string text)                     // POLYMORPHISM
     {
         _selectedAnimalText.text = text;
     }
 
-    public void ChangeText(Color color)
+    public void ChangeText(Color color)                     // POLYMORPHISM
     {
         _selectedAnimalText.color = color;
     }

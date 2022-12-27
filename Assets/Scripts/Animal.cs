@@ -11,8 +11,8 @@ public class Animal : MonoBehaviour
     protected AudioSource _audioSource;
 
 
-    private float _speed;
-   [HideInInspector] public float Speed
+    private float _speed;                    // ENCAPSULATION
+    [HideInInspector] public float Speed     // ENCAPSULATION
     {
         get { return _speed; }
         set { if (value >= 1.0f && value <= 50.0f) _speed = value;
@@ -20,8 +20,8 @@ public class Animal : MonoBehaviour
         }
     }
         
-    private float _ratioSpeedAnim;
-    [HideInInspector] public float RatioSpeedAnim
+    private float _ratioSpeedAnim;                      // ENCAPSULATION
+    [HideInInspector] public float RatioSpeedAnim       // ENCAPSULATION
     {
         get { return _ratioSpeedAnim; }
         set {
@@ -47,7 +47,7 @@ public class Animal : MonoBehaviour
         VerifyArrivalToDestination();
     }
 
-    public virtual void VerifyArrivalToDestination()
+    public virtual void VerifyArrivalToDestination()          // ABSTRACTION
     {
         if (Vector3.Distance(transform.position, _agent.destination) < 0.2f)
         {
@@ -56,7 +56,7 @@ public class Animal : MonoBehaviour
     }
 
 
-    public virtual void Move(Transform dest)
+    public virtual void Move(Transform dest)          // ABSTRACTION
     {
         Debug.Log("La méthode Move() de la classe de base Animal a été appelée.");
         _agent.isStopped = false;
@@ -68,7 +68,7 @@ public class Animal : MonoBehaviour
 
 
 
-    public void StopMovement()
+    public void StopMovement()             // ABSTRACTION
     {
         _agent.isStopped = true;
         _anim.SetFloat("Speed_f", 0);
@@ -78,7 +78,7 @@ public class Animal : MonoBehaviour
 
 
 
-    protected void SetSpeedAnimation(float ratio)
+    protected void SetSpeedAnimation(float ratio)       // ABSTRACTION
     {
         _anim.speed = Speed / ratio;
     }

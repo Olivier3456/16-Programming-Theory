@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spider : Animal
+public class Spider : Animal            // INHERITANCE
 {
     
     private float _spiderSpeed = 10.0f;
@@ -11,8 +11,8 @@ public class Spider : Animal
     
     private void Awake()
     {
-        Speed = _spiderSpeed;                          // Connecte la varible _spiderSpeed à la property Speed de la classe-mère.
-        RatioSpeedAnim = _ratioSpiderSpeedAnim;        // Idem avec _ratioSpeedAnim.             
+        Speed = _spiderSpeed;                          // INHERITANCE
+        RatioSpeedAnim = _ratioSpiderSpeedAnim;        // INHERITANCE          
     }
     
 }
