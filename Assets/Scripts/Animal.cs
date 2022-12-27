@@ -73,7 +73,7 @@ public class Animal : MonoBehaviour
         _agent.isStopped = true;
         _anim.SetFloat("Speed_f", 0);
         SetSpeedAnimation(Speed);            // Remet la vitesse d'animation à 1 pour l'animation Idle.
-        _audioSource.Pause();
+        _audioSource.Stop();
     }
 
 

@@ -28,7 +28,7 @@ public class Wasp : Animal
         {
 
             Debug.Log("L'abeille est arrivée à destination.");
-            _audioSource.Pause();
+            _audioSource.Stop();
             StopMovement();
         }
     }
