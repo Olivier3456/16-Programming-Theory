@@ -13,10 +13,14 @@ public class GameManager : MonoBehaviour
 
     private TextMeshProUGUI _selectedAnimalText;
 
+    private GameObject _marker;
+
     void Start()
     {     
         _destination = transform;
         _selectedAnimalText = GameObject.Find("SelectedAnimal Text").GetComponent<TextMeshProUGUI>();
+
+        _marker = GameObject.Find("Marker");
     }
 
 
@@ -37,6 +41,10 @@ public class GameManager : MonoBehaviour
             if (hit.transform.CompareTag("Animal"))
             {
                 _selectedAnimal = hit.transform.gameObject;
+
+                _marker.transform.SetParent(_selectedAnimal.transform);
+                _marker.transform.position = _selectedAnimal.transform.position;
+
 
                 ChangeText("Selected animal: " + hit.transform.gameObject.name, Color.white);
             }
