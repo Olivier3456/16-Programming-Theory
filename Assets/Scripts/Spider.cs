@@ -9,10 +9,11 @@ public class Spider : Animal            // INHERITANCE
     private float _ratioSpiderSpeedAnim = 5.0f;
     
     
-    private void Awake()
+    private void Start()
     {
         Speed = _spiderSpeed;                          // INHERITANCE
-        RatioSpeedAnim = _ratioSpiderSpeedAnim;        // INHERITANCE          
+        RatioSpeedAnim = _ratioSpiderSpeedAnim;        // INHERITANCE
+        ResetSpeed();
     }
     
 }

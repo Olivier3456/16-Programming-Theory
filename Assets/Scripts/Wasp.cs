@@ -12,26 +12,15 @@ public class Wasp : Animal          // INHERITANCE
     private Transform _finalDestination;
 
 
-    private void Awake()
+    private void Start()
     {
         Speed = _waspSpeed;                          // INHERITANCE
         RatioSpeedAnim = _ratioWaspSpeedAnim;        // INHERITANCE   
         _finalDestination = transform;
+        ResetSpeed();
     }
 
 
-    public override void VerifyArrivalToDestination()           // POLYMORPHISM
-    {
-        Debug.Log("La méthode override VerifyArrivalToDestination() de la classe Wasp a été appelée");
-
-        if (Vector3.Distance(transform.position, _finalDestination.position) < 0.5f)
-        {
-
-            Debug.Log("L'abeille est arrivée à destination.");
-            _audioSource.Stop();
-            StopMovement();         // INHERITANCE
-        }
-    }
 
     IEnumerator RandomMove()
     {
@@ -55,8 +44,6 @@ public class Wasp : Animal          // INHERITANCE
 
     public override void Move(Transform dest)           // POLYMORPHISM
     {
-        Debug.Log("La méthode override Move() de la classe Wasp a été appelée.");
-
         _finalDestination = dest;
         _indexMovements = 0;
         _audioSource.Play();
@@ -68,7 +55,9 @@ public class Wasp : Animal          // INHERITANCE
     {
         GameObject result = new GameObject();
         result.transform.position = new Vector3(Random.Range(-45, 45), 0, Random.Range(-45, 45));
+        Destroy(result, 0.1f);
         return result.transform;
+        
     }
 
 }

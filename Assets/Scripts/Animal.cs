@@ -31,26 +31,39 @@ public class Animal : MonoBehaviour
     }
 
 
-
-    void Start()
+    private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _anim = GetComponent<Animator>();
-        Debug.Log("Vitesse de l'agent : " + Speed);
-        _agent.speed = Speed;
+        _anim = GetComponent<Animator>();        
         _audioSource = GetComponent<AudioSource>();
     }
-
 
     private void Update()
     {
         VerifyArrivalToDestination();
     }
 
+
+    public void FastSpeed()
+    {           
+        _agent.speed = Speed * 2;
+        _anim.speed = RatioSpeedAnim * 4;
+        _audioSource.pitch = 1.25f;
+    }
+
+    public void ResetSpeed()
+    {
+        _agent.speed = Speed ;
+        _anim.speed = RatioSpeedAnim;
+        _audioSource.pitch = 0.75f;
+    }
+
+
     public virtual void VerifyArrivalToDestination()          // ABSTRACTION
     {
-        if (Vector3.Distance(transform.position, _agent.destination) < 0.2f)
+        if (Vector3.Distance(transform.position, _agent.destination) < 0.8f)
         {
+            ResetSpeed();
             StopMovement();
         }
     }
@@ -58,7 +71,6 @@ public class Animal : MonoBehaviour
 
     public virtual void Move(Transform dest)          // ABSTRACTION
     {
-        Debug.Log("La méthode Move() de la classe de base Animal a été appelée.");
         _agent.isStopped = false;
         _agent.SetDestination(dest.position);
         _anim.SetFloat("Speed_f", 1);
